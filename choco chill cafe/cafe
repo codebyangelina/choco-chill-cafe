@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choco Chill Cafe</title>
+<style>
+/* Basic Reset */
+* {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+body {scroll-behavior: smooth;}
+
+/* Header & Navbar */
+header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+header h1 {font-size: 24px;}
+nav a {
+  color: white; text-decoration: none; margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+nav a:hover {color: #f8b400;}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  padding: 100px 20px 50px 20px;
+  color: #333;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+section.visible {opacity: 1; transform: translateY(0);}
+.home {background: url('https://static.vecteezy.com/system/resources/thumbnails/049/234/649/small/iced-coffee-with-cream-and-chocolate-drizzle-on-a-dark-background-photo.jpeg') center/cover no-repeat; color:white; display:flex; justify-content:center; align-items:center; text-align:center;}
+.menu {background: url('https://static.vecteezy.com/system/resources/thumbnails/049/234/640/small/iced-coffee-with-cream-and-coffee-beans-on-a-dark-textured-surface-photo.jpeg') center/cover no-repeat; color:white;}
+.deals {background: url('https://static.vecteezy.com/system/resources/thumbnails/032/428/589/small/generative-ai-hot-cappuccino-with-latte-art-on-wooden-table-with-coffee-beans-photo.jpg') center/cover no-repeat; color:white;}
+.contact {background: url('https://www.hindustantimes.com/ht-img/img/2024/12/09/550x309/hot_chocolate__1733741973671_1733741974182.jpg') center/cover no-repeat; color:white;}
+
+.home h2, .section-title {text-align:center; margin-bottom:30px; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px;}
+.home h2 {font-size: 48px;}
+
+/* Menu & Deals Cards */
+.cards {display: flex; flex-wrap: wrap; justify-content: center; gap:20px;}
+.card {
+  background: rgba(255,255,255,0.9); padding:20px; border-radius:10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width:250px; text-align:center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #4b2e2e; /* Text ka colour change */
+}
+.card h3 {color: #2c1810;} 
+.card p {color: #5a3d2e;} 
+
+.card img {width:100%; border-radius:10px; margin-bottom:10px;}
+.card:hover {transform: translateY(-10px); box-shadow: 0 8px 16px rgba(0,0,0,0.3);}
+
+/* Contact Form */
+.contact form {max-width:400px; margin:auto; display:flex; flex-direction: column; gap:15px; background: rgba(255,255,255,0.9); padding:20px; border-radius:10px;}
+.contact input, .contact textarea {
+  padding:10px; border-radius:5px; border:1px solid #ccc;
+}
+.contact button {
+  padding:10px; background:#f8b400; border:none; border-radius:5px; color:white; font-weight:bold; cursor:pointer;
+}
+.contact button:hover {background:#e09500;}
+
+/* Footer */
+footer {text-align:center; padding:20px; background:#333; color:white;}
+
+/* Smooth scroll nav highlight */
+nav a.active {color:#f8b400;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Choco Chill</h1>
+  <nav>
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#menu" class="nav-link">Menu</a>
+    <a href="#deals" class="nav-link">Deals</a>
+    <a href="#contact" class="nav-link">Contact Us</a>
+  </nav>
+</header>
+
+<!-- Home Section -->
+<section id="home" class="home">
+  <h2>Welcome to Choco Chill Cafe 🍫❄️</h2>
+</section>
+
+<!-- Menu Section -->
+<section id="menu" class="menu">
+  <h2 class="section-title">Our Menu</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://pbs.twimg.com/media/FqXboceaYAAnz-N.jpg" alt="Chocolate Drink">
+      <h3>Chocolate Drinks</h3>
+      <p>Rich and creamy chocolate beverages to delight your taste buds.</p>
+    </div>
+    <div class="card">
+      <img src="https://chillcoffeeandtea.com/wp-content/uploads/2023/11/CAFE-chocolate-1.jpg" alt="Choco Dessert">
+      <h3>Choco Desserts</h3>
+      <p>Delicious desserts loaded with chocolate goodness.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Deals Section -->
+<section id="deals" class="deals">
+  <h2 class="section-title">Special Deals</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://pbs.twimg.com/media/FqXboceaYAAnz-N.jpg" alt="Hot Chocolate">
+      <h3>Buy 1 Get 1 Free</h3>
+      <p>Available on hot chocolate every Monday!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <h2 class="section-title">Contact Us</h2>
+  <form onsubmit="submitForm(event)">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="4" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 Choco Chill Cafe. All rights reserved.
+</footer>
+
+<script>
+// Smooth scroll highlight & fade-in
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 150;
+    if(pageYOffset >= sectionTop) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if(link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+
+  // Fade-in sections
+  sections.forEach(sec => {
+    const secTop = sec.getBoundingClientRect().top;
+    if(secTop < window.innerHeight - 100){
+      sec.classList.add('visible');
+    }
+  });
+});
+
+// Contact form alert
+function submitForm(e){
+  e.preventDefault();
+  alert('Thank you! Your message has been sent.');
+  e.target.reset();
+}
+</script>
+
+</body>
+</html>
